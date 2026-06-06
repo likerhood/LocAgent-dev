@@ -160,8 +160,13 @@ index_data
 index_data/
 loc_bench_data
 loc_bench_data/
-test
-test/
+repo_swebenchlite/
+repo_locbench/
+test/*
+!test/script/
+!test/script/**
+test/swebenchlite-*/
+test/locbench-*/
 playground/
 scripts/env/
 scripts/plot/

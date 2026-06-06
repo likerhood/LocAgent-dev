@@ -2,6 +2,7 @@ import os
 from typing import Optional
 from datasets import load_dataset
 from util.benchmark.git_repo_manager import setup_github_repo
+from util.benchmark.repo_cache import cache_root_for_dataset, prepare_cached_repo
 import argparse
 
 
@@ -42,6 +43,11 @@ def setup_repo(
         github_repo_path = f"swe-bench/{repo_dir_name}"
     else:
         github_repo_path = instance_data["repo"]
+
+    cache_root = cache_root_for_dataset(dataset)
+    if cache_root:
+        return prepare_cached_repo(cache_root, instance_data, github_repo_path)
+
     return setup_github_repo(
         repo=github_repo_path,
         base_commit=instance_data["base_commit"],

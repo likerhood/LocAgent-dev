@@ -125,7 +125,7 @@ def auto_search_process(result_queue,
         use_function_calling = False
         
     # for LLM which do not support function calling
-    if not use_function_calling:
+    if not use_function_calling and tools:
         # 转换message
         messages = convert_fncall_messages_to_non_fncall_messages(messages, tools, add_in_context_learning_example=False)
             
@@ -316,7 +316,12 @@ def run_localize(rank, args, bug_queue, log_queue, output_file_lock, traj_file_l
 
         logger.info("=" * 60)
         logger.info(f"==== rank {rank} setup localize {instance_id} ====")
-        set_current_issue(instance_data=bug, rank=rank)
+        set_current_issue(
+            instance_data=bug,
+            dataset=args.dataset,
+            split=args.split,
+            rank=rank,
+        )
 
         # loc result
         raw_output_loc = []
@@ -602,6 +607,7 @@ def main():
                  # fine-tuned model
                  "openai/qwen-7B", "openai/qwen-7B-128k", "openai/ft-qwen-7B", "openai/ft-qwen-7B-128k",
                  "openai/qwen-32B", "openai/qwen-32B-128k", "openai/ft-qwen-32B", "openai/ft-qwen-32B-128k",
+                 "openai/qwen9b"
         ]
     )
     parser.add_argument("--use_function_calling", action="store_true",

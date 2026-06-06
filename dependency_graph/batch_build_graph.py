@@ -17,7 +17,8 @@ def list_folders(path):
 
 
 def run(rank, repo_queue, repo_path, out_path,
-        download_repo=False, instance_data=None):
+        download_repo=False, instance_data=None,
+        dataset=None, split="test"):
     while True:
         try:
             repo_name = repo_queue.get_nowait()
@@ -38,7 +39,8 @@ def run(rank, repo_queue, repo_path, out_path,
             try:
                 repo_dir = setup_repo(instance_data=instance_data[repo_name], 
                                       repo_base_dir=repo_base_dir, 
-                                      dataset=None)
+                                      dataset=dataset,
+                                      split=split)
             except subprocess.CalledProcessError as e:
                 print(f'[{rank}] Error checkout commit {repo_name}: {e}')
                 continue
@@ -113,7 +115,8 @@ if __name__ == '__main__':
         run,
         nprocs=args.num_processes,
         args=(queue, args.repo_path, args.index_dir,
-              args.download_repo, selected_instance_data),
+              args.download_repo, selected_instance_data,
+              args.dataset, args.split),
         join=True
     )
 

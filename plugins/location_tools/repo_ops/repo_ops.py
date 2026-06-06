@@ -42,6 +42,8 @@ logger = logging.getLogger(__name__)
 
 CURRENT_ISSUE_ID: str | None = None
 CURRENT_INSTANCE: dict | None = None
+CURRENT_DATASET: str | None = None
+CURRENT_SPLIT: str | None = None
 ALL_FILE: list | None = None
 ALL_CLASS: list | None = None
 ALL_FUNC: list | None = None
@@ -52,10 +54,29 @@ DP_GRAPH: nx.MultiDiGraph | None = None
 
 REPO_SAVE_DIR: str | None = None
 
+
+def _create_playground_temp_dir() -> str:
+    repo_save_dir = os.path.join('playground', str(uuid.uuid4()))
+    assert not os.path.exists(repo_save_dir), f"{repo_save_dir} already exists"
+    os.makedirs(repo_save_dir)
+    return repo_save_dir
+
+
+def _is_playground_temp_dir(path: str | None) -> bool:
+    if not path:
+        return False
+    playground_root = os.path.abspath("playground")
+    target_path = os.path.abspath(path)
+    return (
+        os.path.commonpath([playground_root, target_path]) == playground_root
+        and target_path != playground_root
+    )
+
+
 def set_current_issue(instance_id: str = None, 
                       instance_data: dict = None,
                       dataset: str = "princeton-nlp/SWE-bench_Lite", split: str = "test", rank=0):
-    global CURRENT_ISSUE_ID, CURRENT_INSTANCE
+    global CURRENT_ISSUE_ID, CURRENT_INSTANCE, CURRENT_DATASET, CURRENT_SPLIT
     global ALL_FILE, ALL_CLASS, ALL_FUNC
     assert instance_id or instance_data
 
@@ -65,21 +86,23 @@ def set_current_issue(instance_id: str = None,
     else:
         CURRENT_ISSUE_ID = instance_data['instance_id']
         CURRENT_INSTANCE = instance_data
-
+    CURRENT_DATASET = dataset
+    CURRENT_SPLIT = split
     global REPO_SAVE_DIR
-    # Generate a temperary folder and add uuid to avoid collision
-    REPO_SAVE_DIR = os.path.join('playground', str(uuid.uuid4()))
-    # assert playground doesn't exist
-    assert not os.path.exists(REPO_SAVE_DIR), f"{REPO_SAVE_DIR} already exists"
-    # create playground
-    os.makedirs(REPO_SAVE_DIR)
+    REPO_SAVE_DIR = None
     
     # setup graph traverser
     global DP_GRAPH_ENTITY_SEARCHER, DP_GRAPH_DEPENDENCY_SEARCHER, DP_GRAPH
     graph_index_file = f"{GRAPH_INDEX_DIR}/{CURRENT_ISSUE_ID}.pkl"
     if not os.path.exists(graph_index_file):
         # pull repo
-        repo_dir = setup_repo(instance_data=CURRENT_INSTANCE, repo_base_dir=REPO_SAVE_DIR, dataset=None)
+        repo_playground = get_repo_save_dir()
+        repo_dir = setup_repo(
+            instance_data=CURRENT_INSTANCE,
+            repo_base_dir=repo_playground,
+            dataset=dataset,
+            split=split,
+        )
         # parse the repository:
         try:
             os.makedirs(GRAPH_INDEX_DIR, exist_ok=True)
@@ -104,17 +127,20 @@ def set_current_issue(instance_id: str = None,
 
 
 def reset_current_issue():
-    global CURRENT_ISSUE_ID, CURRENT_INSTANCE
+    global CURRENT_ISSUE_ID, CURRENT_INSTANCE, CURRENT_DATASET, CURRENT_SPLIT
     CURRENT_ISSUE_ID = None
     CURRENT_INSTANCE = None
+    CURRENT_DATASET = None
+    CURRENT_SPLIT = None
 
     global ALL_FILE, ALL_CLASS, ALL_FUNC
     ALL_FILE, ALL_CLASS, ALL_FUNC = None, None, None
 
     global REPO_SAVE_DIR
-    subprocess.run(
-        ["rm", "-rf", REPO_SAVE_DIR], check=True
-    )
+    if _is_playground_temp_dir(REPO_SAVE_DIR):
+        subprocess.run(
+            ["rm", "-rf", REPO_SAVE_DIR], check=True
+        )
     REPO_SAVE_DIR = None
 
 
@@ -150,6 +176,8 @@ def get_graph():
 
 def get_repo_save_dir():
     global REPO_SAVE_DIR
+    if REPO_SAVE_DIR is None:
+        REPO_SAVE_DIR = _create_playground_temp_dir()
     return REPO_SAVE_DIR
 
 
@@ -771,7 +799,12 @@ def bm25_content_retrieve(
         retriever = load_retriever(persist_path)
     else:
         repo_playground = get_repo_save_dir()
-        repo_dir = setup_repo(instance_data=instance, repo_base_dir=repo_playground, dataset=None, split=None)
+        repo_dir = setup_repo(
+            instance_data=instance,
+            repo_base_dir=repo_playground,
+            dataset=CURRENT_DATASET,
+            split=CURRENT_SPLIT,
+        )
         absolute_repo_dir = os.path.abspath(repo_dir)
         retriever = build_code_retriever(absolute_repo_dir, persist_path=persist_path,
                                          similarity_top_k=similarity_top_k)
