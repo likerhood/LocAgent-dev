@@ -70,7 +70,14 @@ if __name__ == '__main__':
                         help='The base directory where the generated graph index will be saved.')
     parser.add_argument('--instance_id_path', type=str, default='', 
                         help='Path to a file containing a list of selected instance IDs.')
+    parser.add_argument('--repo_cache_mode', type=str,
+                        default=os.environ.get("LOCAGENT_REPO_CACHE_MODE", "instance"),
+                        choices=["instance", "shared"],
+                        help="Repository cache strategy. 'shared' requires --num_processes 1.")
     args = parser.parse_args()
+    if args.repo_cache_mode == "shared" and args.num_processes != 1:
+        raise ValueError("--repo_cache_mode shared requires --num_processes 1")
+    os.environ["LOCAGENT_REPO_CACHE_MODE"] = args.repo_cache_mode
 
     
     dataset_name = args.dataset.split('/')[-1]

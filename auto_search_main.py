@@ -619,11 +619,20 @@ def main():
                         help='Only use in generating training trajectories.')
     parser.add_argument("--num_samples", type=int, default=2)
     parser.add_argument("--num_processes", type=int, default=-1)
+    parser.add_argument("--repo_cache_mode", type=str,
+                        default=os.environ.get("LOCAGENT_REPO_CACHE_MODE", "instance"),
+                        choices=["instance", "shared"],
+                        help="Repository cache strategy. 'instance' uses a mirror plus one working tree per instance. "
+                             "'shared' uses a mirror plus one resettable working tree per GitHub repo and requires "
+                             "--num_processes 1.")
     
     parser.add_argument("--log_level", type=str, default='INFO')
     parser.add_argument("--timeout", type=int, default=900)
     parser.add_argument("--rerun_empty_location", action="store_true")
     args = parser.parse_args()
+    if args.repo_cache_mode == "shared" and args.num_processes != 1:
+        raise ValueError("--repo_cache_mode shared requires --num_processes 1")
+    os.environ["LOCAGENT_REPO_CACHE_MODE"] = args.repo_cache_mode
 
     args.output_file = os.path.join(args.output_folder, args.output_file)
     os.makedirs(args.output_folder, exist_ok=True)

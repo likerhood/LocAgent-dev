@@ -2,7 +2,7 @@ import os
 from typing import Optional
 from datasets import load_dataset
 from util.benchmark.git_repo_manager import setup_github_repo
-from util.benchmark.repo_cache import cache_root_for_dataset, prepare_cached_repo
+from util.benchmark.repo_cache import cache_root_for_dataset, prepare_repo_from_cache
 import argparse
 
 
@@ -46,7 +46,7 @@ def setup_repo(
 
     cache_root = cache_root_for_dataset(dataset)
     if cache_root:
-        return prepare_cached_repo(cache_root, instance_data, github_repo_path)
+        return prepare_repo_from_cache(cache_root, instance_data, github_repo_path)
 
     return setup_github_repo(
         repo=github_repo_path,

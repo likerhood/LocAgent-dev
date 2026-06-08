@@ -1,0 +1,211 @@
+{
+  "dataset": "czlll/Loc-Bench_V1",
+  "split": "test",
+  "include_added": false,
+  "num_instances": 560,
+  "avg_files_per_instance": 1.2071,
+  "avg_modules_per_instance": 1.6214,
+  "avg_functions_per_instance": 2.0518,
+  "max_files_per_instance": 5,
+  "max_modules_per_instance": 10,
+  "max_functions_per_instance": 10,
+  "file_count_histogram": {
+    "1": 484,
+    "2": 44,
+    "3": 25,
+    "4": 6,
+    "5": 1
+  },
+  "module_count_histogram": {
+    "1": 413,
+    "2": 56,
+    "3": 48,
+    "4": 13,
+    "5": 14,
+    "6": 7,
+    "7": 3,
+    "8": 2,
+    "9": 2,
+    "10": 2
+  },
+  "function_count_histogram": {
+    "1": 352,
+    "2": 75,
+    "3": 47,
+    "4": 27,
+    "5": 18,
+    "6": 12,
+    "7": 9,
+    "8": 10,
+    "9": 7,
+    "10": 3
+  },
+  "top_repos": [
+    {
+      "item": "django/django",
+      "count": 35
+    },
+    {
+      "item": "yt-dlp/yt-dlp",
+      "count": 27
+    },
+    {
+      "item": "vllm-project/vllm",
+      "count": 24
+    },
+    {
+      "item": "pandas-dev/pandas",
+      "count": 22
+    },
+    {
+      "item": "dask/dask",
+      "count": 20
+    },
+    {
+      "item": "scikit-learn/scikit-learn",
+      "count": 19
+    },
+    {
+      "item": "jax-ml/jax",
+      "count": 17
+    },
+    {
+      "item": "huggingface/diffusers",
+      "count": 17
+    },
+    {
+      "item": "PrefectHQ/prefect",
+      "count": 16
+    },
+    {
+      "item": "huggingface/transformers",
+      "count": 15
+    }
+  ],
+  "top_files": [
+    {
+      "item": "pandas/core/generic.py",
+      "count": 7
+    },
+    {
+      "item": "sqlglot/parser.py",
+      "count": 7
+    },
+    {
+      "item": "yt_dlp/extractor/youtube.py",
+      "count": 6
+    },
+    {
+      "item": "dask/array/core.py",
+      "count": 4
+    },
+    {
+      "item": "docling/backend/msword_backend.py",
+      "count": 4
+    },
+    {
+      "item": "jax/_src/numpy/lax_numpy.py",
+      "count": 4
+    },
+    {
+      "item": "modin/core/dataframe/pandas/dataframe/dataframe.py",
+      "count": 3
+    },
+    {
+      "item": "modin/core/dataframe/pandas/partitioning/partition_manager.py",
+      "count": 3
+    },
+    {
+      "item": "sklearn/utils/estimator_checks.py",
+      "count": 3
+    },
+    {
+      "item": "pandas/core/series.py",
+      "count": 3
+    }
+  ],
+  "top_modules": [
+    {
+      "item": "pandas/core/generic.py:NDFrame",
+      "count": 7
+    },
+    {
+      "item": "sqlglot/parser.py:Parser",
+      "count": 7
+    },
+    {
+      "item": "docling/backend/msword_backend.py:MsWordDocumentBackend",
+      "count": 4
+    },
+    {
+      "item": "modin/core/dataframe/pandas/dataframe/dataframe.py:PandasDataframe",
+      "count": 3
+    },
+    {
+      "item": "modin/core/dataframe/pandas/partitioning/partition_manager.py:PandasDataframePartitionManager",
+      "count": 3
+    },
+    {
+      "item": "pandas/core/series.py:Series",
+      "count": 3
+    },
+    {
+      "item": "yt_dlp/extractor/youtube.py:YoutubeIE",
+      "count": 3
+    },
+    {
+      "item": "mypy/checkpattern.py:PatternChecker",
+      "count": 3
+    },
+    {
+      "item": "yt_dlp/extractor/bilibili.py:BiliBiliIE",
+      "count": 3
+    },
+    {
+      "item": "aiohttp/payload.py:PayloadRegistry",
+      "count": 3
+    }
+  ],
+  "top_functions": [
+    {
+      "item": "yt_dlp/extractor/bilibili.py:BiliBiliIE._real_extract",
+      "count": 3
+    },
+    {
+      "item": "aiohttp/payload.py:PayloadRegistry",
+      "count": 3
+    },
+    {
+      "item": "aiohttp/payload.py:PayloadRegistry.get",
+      "count": 3
+    },
+    {
+      "item": "aiohttp/payload.py:PayloadRegistry.register",
+      "count": 3
+    },
+    {
+      "item": "aiohttp/payload.py:Payload",
+      "count": 3
+    },
+    {
+      "item": "aiohttp/payload.py:BytesPayload",
+      "count": 3
+    },
+    {
+      "item": "benchmarks/benchmark_serving.py:benchmark",
+      "count": 2
+    },
+    {
+      "item": "benchmarks/benchmark_serving.py:main",
+      "count": 2
+    },
+    {
+      "item": "django/contrib/admin/sites.py:AdminSite.get_urls",
+      "count": 2
+    },
+    {
+      "item": "src/prefect/cli/deploy.py:deploy",
+      "count": 2
+    }
+  ]
+}

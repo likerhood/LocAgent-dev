@@ -165,6 +165,10 @@ repo_locbench/
 test/*
 !test/script/
 !test/script/**
+!test/demotest/
+!test/demotest/**
+!test/OmniGIRL/
+!test/OmniGIRL/**
 test/swebenchlite-*/
 test/locbench-*/
 playground/
@@ -174,6 +178,8 @@ config.yaml
 deprecated/
 *.arrow
 test_*.py
+!test/demotest/test_*.py
+!test/OmniGIRL/test_*.py
 
 .idea
 .DS_Store

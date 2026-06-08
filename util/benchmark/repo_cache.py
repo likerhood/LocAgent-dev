@@ -15,6 +15,10 @@ except ImportError:  # pragma: no cover - LocAgent benchmark runs on Linux/WSL.
 logger = logging.getLogger(__name__)
 
 REPO_CACHE_ENV = "LOCAGENT_REPO_CACHE_DIR"
+REPO_CACHE_MODE_ENV = "LOCAGENT_REPO_CACHE_MODE"
+REPO_CACHE_MODE_INSTANCE = "instance"
+REPO_CACHE_MODE_SHARED = "shared"
+REPO_CACHE_MODES = {REPO_CACHE_MODE_INSTANCE, REPO_CACHE_MODE_SHARED}
 
 DATASET_CACHE_ROOTS = {
     "czlll/SWE-bench_Lite": "repo_swebenchlite",
@@ -32,6 +36,16 @@ def cache_root_for_dataset(dataset: Optional[str]) -> Optional[str]:
     return DATASET_CACHE_ROOTS.get(dataset)
 
 
+def repo_cache_mode() -> str:
+    mode = os.environ.get(REPO_CACHE_MODE_ENV, REPO_CACHE_MODE_INSTANCE).strip()
+    if mode not in REPO_CACHE_MODES:
+        raise ValueError(
+            f"Invalid {REPO_CACHE_MODE_ENV}={mode!r}. "
+            f"Expected one of {sorted(REPO_CACHE_MODES)}."
+        )
+    return mode
+
+
 def repo_dir_name(repo: str) -> str:
     return repo.replace("/", "_")
 
@@ -45,6 +59,10 @@ def cached_repo_path(cache_root: str, instance_data: dict, github_repo_path: str
 
 def mirror_repo_path(cache_root: str, github_repo_path: str) -> str:
     return os.path.join(cache_root, "_mirrors", f"{repo_dir_name(github_repo_path)}.git")
+
+
+def shared_repo_path(cache_root: str, github_repo_path: str) -> str:
+    return os.path.join(cache_root, "_shared_worktrees", repo_dir_name(github_repo_path))
 
 
 def repo_lock_path(cache_root: str, github_repo_path: str) -> str:
@@ -66,7 +84,17 @@ def _run_command(args: list[str], cwd: Optional[str] = None) -> str:
     return result.stdout.strip()
 
 
+def _is_bare_repo_dir(repo_dir: str) -> bool:
+    return (
+        os.path.isfile(os.path.join(repo_dir, "HEAD"))
+        and os.path.isdir(os.path.join(repo_dir, "objects"))
+        and not os.path.isdir(os.path.join(repo_dir, ".git"))
+    )
+
+
 def _run_git(repo_dir: str, *args: str) -> str:
+    if _is_bare_repo_dir(repo_dir):
+        return _run_command(["git", f"--git-dir={repo_dir}", *args])
     return _run_command(["git", *args], cwd=repo_dir)
 
 
@@ -275,3 +303,73 @@ def prepare_cached_repo(cache_root: str, instance_data: dict, github_repo_path: 
         _clone_instance_from_mirror(mirror_path, repo_path)
         _reset_cached_repo(repo_path, base_commit)
         return repo_path
+
+
+def _remove_shared_repo(cache_root: str, repo_path: str) -> None:
+    cache_root_abs = os.path.abspath(cache_root)
+    shared_root = os.path.abspath(os.path.join(cache_root, "_shared_worktrees"))
+    repo_path_abs = os.path.abspath(repo_path)
+
+    if os.path.commonpath([cache_root_abs, shared_root]) != cache_root_abs:
+        raise RuntimeError(f"Refuse to delete path outside cache root: {shared_root}")
+    if os.path.commonpath([shared_root, repo_path_abs]) != shared_root:
+        raise RuntimeError(f"Refuse to delete shared repo outside shared cache: {repo_path}")
+
+    shutil.rmtree(repo_path, ignore_errors=True)
+
+
+def prepare_shared_repo(cache_root: str, instance_data: dict, github_repo_path: str) -> str:
+    if not cache_root:
+        raise ValueError("cache_root must be provided")
+
+    base_commit = instance_data.get("base_commit")
+    if not base_commit:
+        raise ValueError("instance_data must contain 'base_commit' to use repo cache")
+
+    repo_path = shared_repo_path(cache_root, github_repo_path)
+
+    with repo_cache_lock(cache_root, github_repo_path):
+        mirror_path = _ensure_mirror_repo(cache_root, github_repo_path, base_commit)
+
+        if os.path.exists(repo_path):
+            try:
+                if not is_git_repo(repo_path):
+                    raise RuntimeError(f"Shared repo is not a git repo: {repo_path}")
+                if not has_commit(repo_path, base_commit):
+                    logger.info(
+                        "Shared repo %s missing commit %s. Fetching from mirror.",
+                        repo_path,
+                        base_commit,
+                    )
+                    _run_git(repo_path, "fetch", "--all", "--prune")
+                if not has_commit(repo_path, base_commit):
+                    raise RuntimeError(f"Shared repo is missing commit: {repo_path}")
+                _reset_cached_repo(repo_path, base_commit)
+                logger.info("Using shared repo %s at commit %s", repo_path, base_commit)
+                return repo_path
+            except (RuntimeError, subprocess.CalledProcessError, FileNotFoundError):
+                logger.warning(
+                    "Broken shared repo for %s detected at %s. Rebuilding.",
+                    github_repo_path,
+                    repo_path,
+                )
+                _remove_shared_repo(cache_root, repo_path)
+
+        logger.info(
+            "Shared repo for %s not found. Cloning from local mirror %s into %s",
+            github_repo_path,
+            mirror_path,
+            repo_path,
+        )
+        _clone_instance_from_mirror(mirror_path, repo_path)
+        _reset_cached_repo(repo_path, base_commit)
+        return repo_path
+
+
+def prepare_repo_from_cache(cache_root: str, instance_data: dict, github_repo_path: str) -> str:
+    mode = repo_cache_mode()
+    if mode == REPO_CACHE_MODE_INSTANCE:
+        return prepare_cached_repo(cache_root, instance_data, github_repo_path)
+    if mode == REPO_CACHE_MODE_SHARED:
+        return prepare_shared_repo(cache_root, instance_data, github_repo_path)
+    raise AssertionError(f"Unhandled repo cache mode: {mode}")

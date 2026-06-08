@@ -1,0 +1,194 @@
+{
+  "dataset": "czlll/SWE-bench_Lite",
+  "split": "test",
+  "include_added": false,
+  "num_instances": 274,
+  "avg_files_per_instance": 1.0,
+  "avg_modules_per_instance": 1.0547,
+  "avg_functions_per_instance": 1.1533,
+  "max_files_per_instance": 1,
+  "max_modules_per_instance": 3,
+  "max_functions_per_instance": 4,
+  "file_count_histogram": {
+    "1": 274
+  },
+  "module_count_histogram": {
+    "1": 260,
+    "2": 13,
+    "3": 1
+  },
+  "function_count_histogram": {
+    "1": 239,
+    "2": 29,
+    "3": 5,
+    "4": 1
+  },
+  "top_repos": [
+    {
+      "item": "django/django",
+      "count": 102
+    },
+    {
+      "item": "sympy/sympy",
+      "count": 66
+    },
+    {
+      "item": "matplotlib/matplotlib",
+      "count": 22
+    },
+    {
+      "item": "scikit-learn/scikit-learn",
+      "count": 22
+    },
+    {
+      "item": "pytest-dev/pytest",
+      "count": 16
+    },
+    {
+      "item": "sphinx-doc/sphinx",
+      "count": 16
+    },
+    {
+      "item": "astropy/astropy",
+      "count": 6
+    },
+    {
+      "item": "psf/requests",
+      "count": 6
+    },
+    {
+      "item": "pylint-dev/pylint",
+      "count": 6
+    },
+    {
+      "item": "pydata/xarray",
+      "count": 5
+    }
+  ],
+  "top_files": [
+    {
+      "item": "django/db/models/sql/query.py",
+      "count": 7
+    },
+    {
+      "item": "django/db/models/fields/__init__.py",
+      "count": 6
+    },
+    {
+      "item": "sympy/printing/latex.py",
+      "count": 6
+    },
+    {
+      "item": "sympy/printing/pretty/pretty.py",
+      "count": 6
+    },
+    {
+      "item": "django/db/migrations/serializer.py",
+      "count": 5
+    },
+    {
+      "item": "django/db/models/sql/compiler.py",
+      "count": 4
+    },
+    {
+      "item": "sphinx/ext/autodoc/__init__.py",
+      "count": 4
+    },
+    {
+      "item": "django/db/migrations/autodetector.py",
+      "count": 3
+    },
+    {
+      "item": "django/db/models/base.py",
+      "count": 3
+    },
+    {
+      "item": "django/db/migrations/operations/models.py",
+      "count": 3
+    }
+  ],
+  "top_modules": [
+    {
+      "item": "django/db/models/sql/query.py:Query",
+      "count": 7
+    },
+    {
+      "item": "sympy/printing/latex.py:LatexPrinter",
+      "count": 6
+    },
+    {
+      "item": "sympy/printing/pretty/pretty.py:PrettyPrinter",
+      "count": 6
+    },
+    {
+      "item": "django/db/models/sql/compiler.py:SQLCompiler",
+      "count": 4
+    },
+    {
+      "item": "django/db/models/fields/__init__.py:Field",
+      "count": 4
+    },
+    {
+      "item": "django/db/migrations/autodetector.py:MigrationAutodetector",
+      "count": 3
+    },
+    {
+      "item": "django/db/models/base.py:Model",
+      "count": 3
+    },
+    {
+      "item": "django/db/models/deletion.py:Collector",
+      "count": 2
+    },
+    {
+      "item": "django/utils/autoreload.py:iter_modules_and_files",
+      "count": 2
+    },
+    {
+      "item": "django/db/migrations/serializer.py:EnumSerializer",
+      "count": 2
+    }
+  ],
+  "top_functions": [
+    {
+      "item": "django/db/models/deletion.py:Collector.delete",
+      "count": 2
+    },
+    {
+      "item": "django/utils/autoreload.py:iter_modules_and_files",
+      "count": 2
+    },
+    {
+      "item": "django/db/migrations/serializer.py:EnumSerializer.serialize",
+      "count": 2
+    },
+    {
+      "item": "django/db/models/fields/__init__.py:Field.contribute_to_class",
+      "count": 2
+    },
+    {
+      "item": "django/db/migrations/serializer.py:TypeSerializer.serialize",
+      "count": 2
+    },
+    {
+      "item": "django/db/models/sql/compiler.py:SQLCompiler.find_ordering_name",
+      "count": 2
+    },
+    {
+      "item": "django/db/models/query_utils.py:Q._combine",
+      "count": 2
+    },
+    {
+      "item": "lib/matplotlib/offsetbox.py:DraggableBase",
+      "count": 2
+    },
+    {
+      "item": "sympy/core/mod.py:Mod.eval",
+      "count": 2
+    },
+    {
+      "item": "sympy/core/numbers.py:Integer._eval_power",
+      "count": 2
+    }
+  ]
+}
