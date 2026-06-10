@@ -1,0 +1,10 @@
+# Small Multi-SWE-bench subset for LocAgent-style localization experiments.
+# LocAgent's --used_list reads this top-level key from config.toml.
+mutilswe_small_60 = [ "ponylang__ponyc-2504", "jqlang__jq-2157", "jqlang__jq-2839", "jqlang__jq-2728", "ponylang__ponyc-3006", "ponylang__ponyc-2203", "jqlang__jq-1793", "facebook__zstd-1458", "jqlang__jq-2133", "nlohmann__json-3664", "catchorg__Catch2-1616", "fmtlib__fmt-2394", "catchorg__Catch2-2849", "nlohmann__json-2099", "yhirose__cpp-httplib-1765", "fmtlib__fmt-4310", "fmtlib__fmt-4057", "fmtlib__fmt-3734", "cli__cli-7759", "cli__cli-10158", "cli__cli-402", "cli__cli-8238", "cli__cli-5642", "cli__cli-5885", "cli__cli-10072", "cli__cli-2249", "cli__cli-879", "alibaba__fastjson2-2097", "fasterxml__jackson-databind-4050", "apache__dubbo-11781", "apache__dubbo-10638", "alibaba__fastjson2-82", "fasterxml__jackson-databind-3701", "alibaba__fastjson2-2285", "elastic__logstash-16079", "googlecontainertools__jib-4035", "iamkun__dayjs-591", "iamkun__dayjs-589", "iamkun__dayjs-1307", "Kong__insomnia-7734", "iamkun__dayjs-867", "sveltejs__svelte-12304", "anuraghazra__github-readme-stats-2228", "anuraghazra__github-readme-stats-1041", "clap-rs__clap-2085", "clap-rs__clap-941", "BurntSushi__ripgrep-2576", "sharkdp__bat-2544", "nushell__nushell-12118", "sharkdp__bat-1276", "nushell__nushell-10405", "sharkdp__fd-555", "vuejs__core-8911", "mui__material-ui-33880", "mui__material-ui-32713", "mui__material-ui-36853", "vuejs__core-10027", "mui__material-ui-25637", "mui__material-ui-38247", "mui__material-ui-34610", ]
+
+# Metadata for humans/scripts.
+dataset = "ByteDance-Seed/Multi-SWE-bench"
+subset_file = "test/mutilswe_small/samples.jsonl"
+instance_ids_file = "test/mutilswe_small/instance_ids.txt"
+selected_count = 60
+notes = "Multi-SWE-bench is multilingual issue resolution. URL/image modality here is derived from issue text links, not a native image column."

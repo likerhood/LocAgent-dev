@@ -1,0 +1,168 @@
+{
+  "selected_count": 60,
+  "language_counts": {
+    "C": 9,
+    "C++": 9,
+    "Go": 9,
+    "Java": 9,
+    "JavaScript": 8,
+    "Rust": 8,
+    "TypeScript": 8
+  },
+  "modality_counts": {
+    "website_only": 17,
+    "image_and_website": 37,
+    "image_only": 6
+  },
+  "repository_counts": {
+    "ponylang/ponyc": 3,
+    "jqlang/jq": 5,
+    "facebook/zstd": 1,
+    "nlohmann/json": 2,
+    "catchorg/Catch2": 2,
+    "fmtlib/fmt": 4,
+    "yhirose/cpp-httplib": 1,
+    "cli/cli": 9,
+    "alibaba/fastjson2": 3,
+    "fasterxml/jackson-databind": 2,
+    "apache/dubbo": 2,
+    "elastic/logstash": 1,
+    "googlecontainertools/jib": 1,
+    "iamkun/dayjs": 4,
+    "Kong/insomnia": 1,
+    "sveltejs/svelte": 1,
+    "anuraghazra/github-readme-stats": 2,
+    "clap-rs/clap": 2,
+    "BurntSushi/ripgrep": 1,
+    "sharkdp/bat": 2,
+    "nushell/nushell": 2,
+    "sharkdp/fd": 1,
+    "vuejs/core": 2,
+    "mui/material-ui": 6
+  },
+  "image_instance_count": 43,
+  "website_instance_count": 54,
+  "image_url_count": 96,
+  "website_url_count": 149,
+  "modified_file_count": 146,
+  "hunk_header_count": 166,
+  "avg_modified_files": 2.433333333333333,
+  "median_modified_files": 1.0,
+  "avg_hunks": 2.7666666666666666,
+  "median_hunks": 1.0,
+  "by_language": {
+    "C": {
+      "count": 9,
+      "modality_counts": {
+        "website_only": 9
+      },
+      "repo_counts": {
+        "ponylang/ponyc": 3,
+        "jqlang/jq": 5,
+        "facebook/zstd": 1
+      },
+      "image_instance_count": 0,
+      "website_instance_count": 9,
+      "avg_modified_files": 1,
+      "median_modified_files": 1
+    },
+    "C++": {
+      "count": 9,
+      "modality_counts": {
+        "image_and_website": 2,
+        "image_only": 3,
+        "website_only": 4
+      },
+      "repo_counts": {
+        "nlohmann/json": 2,
+        "catchorg/Catch2": 2,
+        "fmtlib/fmt": 4,
+        "yhirose/cpp-httplib": 1
+      },
+      "image_instance_count": 5,
+      "website_instance_count": 6,
+      "avg_modified_files": 8.333333333333334,
+      "median_modified_files": 1
+    },
+    "Go": {
+      "count": 9,
+      "modality_counts": {
+        "image_and_website": 9
+      },
+      "repo_counts": {
+        "cli/cli": 9
+      },
+      "image_instance_count": 9,
+      "website_instance_count": 9,
+      "avg_modified_files": 1,
+      "median_modified_files": 1
+    },
+    "Java": {
+      "count": 9,
+      "modality_counts": {
+        "image_and_website": 4,
+        "image_only": 1,
+        "website_only": 4
+      },
+      "repo_counts": {
+        "alibaba/fastjson2": 3,
+        "fasterxml/jackson-databind": 2,
+        "apache/dubbo": 2,
+        "elastic/logstash": 1,
+        "googlecontainertools/jib": 1
+      },
+      "image_instance_count": 5,
+      "website_instance_count": 8,
+      "avg_modified_files": 1.1111111111111112,
+      "median_modified_files": 1
+    },
+    "JavaScript": {
+      "count": 8,
+      "modality_counts": {
+        "image_and_website": 8
+      },
+      "repo_counts": {
+        "iamkun/dayjs": 4,
+        "Kong/insomnia": 1,
+        "sveltejs/svelte": 1,
+        "anuraghazra/github-readme-stats": 2
+      },
+      "image_instance_count": 8,
+      "website_instance_count": 8,
+      "avg_modified_files": 1,
+      "median_modified_files": 1.0
+    },
+    "Rust": {
+      "count": 8,
+      "modality_counts": {
+        "image_and_website": 6,
+        "image_only": 2
+      },
+      "repo_counts": {
+        "clap-rs/clap": 2,
+        "BurntSushi/ripgrep": 1,
+        "sharkdp/bat": 2,
+        "nushell/nushell": 2,
+        "sharkdp/fd": 1
+      },
+      "image_instance_count": 8,
+      "website_instance_count": 6,
+      "avg_modified_files": 3.375,
+      "median_modified_files": 2.5
+    },
+    "TypeScript": {
+      "count": 8,
+      "modality_counts": {
+        "image_and_website": 8
+      },
+      "repo_counts": {
+        "vuejs/core": 2,
+        "mui/material-ui": 6
+      },
+      "image_instance_count": 8,
+      "website_instance_count": 8,
+      "avg_modified_files": 1,
+      "median_modified_files": 1.0
+    }
+  }
+}

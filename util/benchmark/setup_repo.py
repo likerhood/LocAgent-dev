@@ -1,7 +1,7 @@
 import os
 from typing import Optional
-from datasets import load_dataset
 from util.benchmark.git_repo_manager import setup_github_repo
+from util.benchmark.dataset_loader import load_benchmark_dataset
 from util.benchmark.repo_cache import cache_root_for_dataset, prepare_repo_from_cache
 import argparse
 
@@ -9,7 +9,7 @@ import argparse
 def load_instances(
     dataset_name: str = "princeton-nlp/SWE-bench_Lite", split: str = "test"
 ):
-    data = load_dataset(dataset_name, split=split)
+    data = load_benchmark_dataset(dataset_name, split=split)
     return {d["instance_id"]: d for d in data}
 
 
@@ -64,7 +64,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    swe_bench_data = load_dataset("princeton-nlp/SWE-bench_Lite", split="test")
+    swe_bench_data = load_benchmark_dataset(args.dataset, split=args.split)
     if args.eval_n_limit:
         swe_bench_data = swe_bench_data.select(range(args.eval_n_limit))
     

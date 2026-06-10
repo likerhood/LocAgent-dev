@@ -162,6 +162,8 @@ loc_bench_data
 loc_bench_data/
 repo_swebenchlite/
 repo_locbench/
+repo_omnigirl/
+repo_mutilswe/
 test/*
 !test/script/
 !test/script/**
@@ -169,6 +171,15 @@ test/*
 !test/demotest/**
 !test/OmniGIRL/
 !test/OmniGIRL/**
+test/OmniGIRL/results*/
+test/OmniGIRL/eval*/
+!test/mutilswe_small/
+!test/mutilswe_small/**
+test/mutilswe_small/__pycache__/
+test/mutilswe_small/results*/
+test/mutilswe_small/eval*/
+evaluation/omnigirl_eval/
+test/script/eval_omnigirl_small_60.sh
 test/swebenchlite-*/
 test/locbench-*/
 playground/
@@ -180,6 +191,7 @@ deprecated/
 test_*.py
 !test/demotest/test_*.py
 !test/OmniGIRL/test_*.py
+!test/mutilswe_small/test_*.py
 
 .idea
 .DS_Store

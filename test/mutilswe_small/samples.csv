@@ -1,0 +1,61 @@
+instance_id,language,repo,modality,image_url_count,website_url_count,modified_file_count,hunk_count,title
+ponylang__ponyc-2504,C,ponylang/ponyc,website_only,0,1,1,1,Properly report default argument inference errors
+jqlang__jq-2157,C,jqlang/jq,website_only,0,3,1,1,Fix uri format to follow RFC 3986
+jqlang__jq-2839,C,jqlang/jq,website_only,0,1,1,1,Fix crash on numeric comparison again (ref #2825)
+jqlang__jq-2728,C,jqlang/jq,website_only,0,3,1,1,Respect NO_COLOR environment variable to disable color output
+ponylang__ponyc-3006,C,ponylang/ponyc,website_only,0,1,1,1,Reject Pointer and MaybePointer from being embedded
+ponylang__ponyc-2203,C,ponylang/ponyc,website_only,0,1,1,1,Fix internal failure on compilation when boxing bool as union into tuple.
+jqlang__jq-1793,C,jqlang/jq,website_only,0,1,1,1,Fix built-in function contains for strings
+facebook__zstd-1458,C,facebook/zstd,website_only,0,1,1,2,[libzstd] Fix estimate with negative levels
+jqlang__jq-2133,C,jqlang/jq,website_only,0,3,1,1,Fix deletion using assigning empty against arrays
+nlohmann__json-3664,C++,nlohmann/json,image_and_website,1,2,15,11,Add json_pointer/string_t equality comparison operators
+catchorg__Catch2-1616,C++,catchorg/Catch2,image_and_website,1,4,48,43,Integrate nonius to provide more advanced benchmarking
+fmtlib__fmt-2394,C++,fmtlib/fmt,image_only,1,0,1,2,"Add faint, blink, reverse and conceal to the emphases"
+catchorg__Catch2-2849,C++,catchorg/Catch2,image_only,4,0,2,2,Handle ANSI escape sequences when performing column wrapping
+nlohmann__json-2099,C++,nlohmann/json,image_only,18,0,5,5,Add tests for binary values
+yhirose__cpp-httplib-1765,C++,yhirose/cpp-httplib,website_only,0,2,1,1,Treat paths with embedded NUL bytes as invalid in detail::is_valid_path
+fmtlib__fmt-4310,C++,fmtlib/fmt,website_only,0,1,1,1,Add args() accessor back to fmt::format_context
+fmtlib__fmt-4057,C++,fmtlib/fmt,website_only,0,1,1,1,Fix usage with std::generator
+fmtlib__fmt-3734,C++,fmtlib/fmt,website_only,0,3,1,1,Disallow presentation_type `c` in combination with `bool` arg 
+cli__cli-7759,Go,cli/cli,image_and_website,1,2,1,1,`release create`: Trim spaces on tag name
+cli__cli-10158,Go,cli/cli,image_and_website,1,2,1,1,fix(repo fork): add non-TTY output when fork is newly created
+cli__cli-402,Go,cli/cli,image_and_website,1,3,1,1,Fix segmentation violation at previewing an issue without description
+cli__cli-8238,Go,cli/cli,image_and_website,2,2,1,1,Fix executable location
+cli__cli-5642,Go,cli/cli,image_and_website,3,1,1,1,Fixing #5624 - Removing unneeded hint and additional new line
+cli__cli-5885,Go,cli/cli,image_and_website,1,1,1,1,add error message to `pr close` when missing args
+cli__cli-10072,Go,cli/cli,image_and_website,3,2,1,1,`gh pr merge --delete-branch` does not delete the remote branch when PR is merged via a merge queue
+cli__cli-2249,Go,cli/cli,image_and_website,1,2,1,2,Fix continue browser for branch slash names
+cli__cli-879,Go,cli/cli,image_and_website,2,1,1,1,Fix parsing some issue template names
+alibaba__fastjson2-2097,Java,alibaba/fastjson2,image_and_website,1,2,1,1,fix parse reference incorrect of java.util.Arrays$ArrayList
+fasterxml__jackson-databind-4050,Java,fasterxml/jackson-databind,image_and_website,2,2,1,1,Fix #4047
+apache__dubbo-11781,Java,apache/dubbo,image_and_website,1,2,1,1,"Fix #11767,  restore the original parameter pair instead of giving default value when doing URL.parse."
+apache__dubbo-10638,Java,apache/dubbo,image_and_website,1,5,2,5,"Fix PojoUtils support localdatetime,lcaldate,localtime serializable and deserialize"
+alibaba__fastjson2-82,Java,alibaba/fastjson2,image_only,1,0,1,2,"bug fixed for json isValid,fix #81"
+fasterxml__jackson-databind-3701,Java,fasterxml/jackson-databind,website_only,0,3,1,1,Allow custom JsonNode implementations
+alibaba__fastjson2-2285,Java,alibaba/fastjson2,website_only,0,1,1,1,fix: enum JSONType#serializer not work #2269
+elastic__logstash-16079,Java,elastic/logstash,website_only,0,3,1,1,Split LS_JAVA_OPTS content when contains multiple options
+googlecontainertools__jib-4035,Java,googlecontainertools/jib,website_only,0,1,1,1,fix: fix WWW-Authenticate header parsing for Basic authentication
+iamkun__dayjs-591,JavaScript,iamkun/dayjs,image_and_website,3,10,1,1,fix: Fix QuarterOfYear plugin bug
+iamkun__dayjs-589,JavaScript,iamkun/dayjs,image_and_website,3,9,1,1,Fixed #587: Replaced add method for setMonth method
+iamkun__dayjs-1307,JavaScript,iamkun/dayjs,image_and_website,2,2,1,1,fix: fix parse regex bug
+Kong__insomnia-7734,JavaScript,Kong/insomnia,image_and_website,1,4,1,1,feat(Generate Collection from Spec): add description to requests if it's available from the oas3 schema
+iamkun__dayjs-867,JavaScript,iamkun/dayjs,image_and_website,4,4,1,1,fix: Fix Duration plugin get seconds
+sveltejs__svelte-12304,JavaScript,sveltejs/svelte,image_and_website,3,1,1,2,fix: create wrapper template for components in HMR mode
+anuraghazra__github-readme-stats-2228,JavaScript,anuraghazra/github-readme-stats,image_and_website,2,5,1,2,Fix truncation of compact wakatime progress bar when langs_count is set
+anuraghazra__github-readme-stats-1041,JavaScript,anuraghazra/github-readme-stats,image_and_website,3,2,1,2,fix: wakatime langs_count when layout=compact
+clap-rs__clap-2085,Rust,clap-rs/clap,image_and_website,3,7,1,1,Don't print spaces in long help
+clap-rs__clap-941,Rust,clap-rs/clap,image_and_website,1,1,1,1,api(Arg): add `default_value_os`
+BurntSushi__ripgrep-2576,Rust,BurntSushi/ripgrep,image_and_website,1,2,2,2,regex: fix fast path for -w/--word-regexp flag
+sharkdp__bat-2544,Rust,sharkdp/bat,image_and_website,2,2,3,11,Treat OSC ANSI Sequences as Invisible Text & Add OSC 8 Support
+nushell__nushell-12118,Rust,nushell/nushell,image_and_website,2,6,6,8,Use XDG_CONFIG_HOME before default config directory
+sharkdp__bat-1276,Rust,sharkdp/bat,image_and_website,2,1,7,14,style: add component 'rule' for horizontal file delimiter
+nushell__nushell-10405,Rust,nushell/nushell,image_only,1,0,1,2,Allow complex types in input/output and let
+sharkdp__fd-555,Rust,sharkdp/fd,image_only,1,0,6,7,Add --max-results=<count> option
+vuejs__core-8911,TypeScript,vuejs/core,image_and_website,1,1,1,1,fix(compiler-sfc): handle prop key escaping properly
+mui__material-ui-33880,TypeScript,mui/material-ui,image_and_website,2,5,1,1,[ListItemText] Fix variant mapping in `primaryTypography`
+mui__material-ui-32713,TypeScript,mui/material-ui,image_and_website,2,10,1,1,[system] Fix toolbar media query mixin getting merged in wrong order
+mui__material-ui-36853,TypeScript,mui/material-ui,image_and_website,3,3,1,1,[CssVarsProvider] Always generate new `css` object
+vuejs__core-10027,TypeScript,vuejs/core,image_and_website,2,1,1,1,fix(runtime-core): properly handle the nested flushPostFlushCbs
+mui__material-ui-25637,TypeScript,mui/material-ui,image_and_website,2,4,1,1,[styles] Outdated warning message
+mui__material-ui-38247,TypeScript,mui/material-ui,image_and_website,2,4,1,1,[docs][material-ui] Fixed Google Fonts link for material two-tone icons in CodeSandbox and Stackblitz
+mui__material-ui-34610,TypeScript,mui/material-ui,image_and_website,2,2,1,1,[Slider] Fix unnecessary accessibility attribute in root element

@@ -1,0 +1,51 @@
+{
+  "dataset": "ByteDance-Seed/Multi-SWE-bench",
+  "selected_count": 60,
+  "available_count": 1632,
+  "language_counts": {
+    "C": 9,
+    "C++": 9,
+    "Go": 9,
+    "Java": 9,
+    "JavaScript": 8,
+    "Rust": 8,
+    "TypeScript": 8
+  },
+  "modality_counts": {
+    "website_only": 17,
+    "image_and_website": 37,
+    "image_only": 6
+  },
+  "repository_counts": {
+    "ponylang/ponyc": 3,
+    "jqlang/jq": 5,
+    "facebook/zstd": 1,
+    "nlohmann/json": 2,
+    "catchorg/Catch2": 2,
+    "fmtlib/fmt": 4,
+    "yhirose/cpp-httplib": 1,
+    "cli/cli": 9,
+    "alibaba/fastjson2": 3,
+    "fasterxml/jackson-databind": 2,
+    "apache/dubbo": 2,
+    "elastic/logstash": 1,
+    "googlecontainertools/jib": 1,
+    "iamkun/dayjs": 4,
+    "Kong/insomnia": 1,
+    "sveltejs/svelte": 1,
+    "anuraghazra/github-readme-stats": 2,
+    "clap-rs/clap": 2,
+    "BurntSushi/ripgrep": 1,
+    "sharkdp/bat": 2,
+    "nushell/nushell": 2,
+    "sharkdp/fd": 1,
+    "vuejs/core": 2,
+    "mui/material-ui": 6
+  },
+  "image_instance_count": 43,
+  "website_instance_count": 54,
+  "image_url_count": 96,
+  "website_url_count": 149,
+  "modified_file_count": 146,
+  "hunk_header_count": 166
+}

@@ -9,7 +9,7 @@ from queue import Empty
 from typing import List
 from tqdm import tqdm
 from copy import deepcopy
-from datasets import load_dataset
+from util.benchmark.dataset_loader import load_benchmark_dataset
 
 from util.runtime.execute_ipython import execute_ipython
 from util.runtime import function_calling
@@ -488,7 +488,7 @@ def run_localize(rank, args, bug_queue, log_queue, output_file_lock, traj_file_l
 
 
 def localize(args):
-    bench_data = load_dataset(args.dataset, split=args.split)
+    bench_data = load_benchmark_dataset(args.dataset, split=args.split)
     bench_tests = filter_dataset(bench_data, 'instance_id', args.used_list)
     if args.eval_n_limit:
         eval_n_limit = min(args.eval_n_limit, len(bench_tests))

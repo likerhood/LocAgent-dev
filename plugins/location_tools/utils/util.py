@@ -1,8 +1,8 @@
-from datasets import load_dataset
 import os
 import fnmatch
 from collections import defaultdict
 import re
+from util.benchmark.dataset_loader import load_benchmark_dataset
 from util.benchmark.setup_repo import setup_repo
 
 
@@ -32,7 +32,7 @@ def find_matching_files_from_list(file_list, file_pattern):
 
 
 def get_meta_data(target_id, dataset:str="princeton-nlp/SWE-bench_Lite", split:str = "test"):
-    swe_bench_data = load_dataset(dataset, split=split)
+    swe_bench_data = load_benchmark_dataset(dataset, split=split)
     bench_data = [x for x in swe_bench_data if x["instance_id"] == target_id][0]
     return bench_data
 
@@ -72,5 +72,4 @@ def extract_file_to_code(raw_content: str):
     file_to_code = {filename: code for filename, code in matches}
 
     return file_to_code
-
 

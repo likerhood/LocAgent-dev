@@ -1,0 +1,8 @@
+language,image_and_website,image_only,website_only,text_only,total
+C,0,0,9,0,9
+C++,2,3,4,0,9
+Go,9,0,0,0,9
+Java,4,1,4,0,9
+JavaScript,8,0,0,0,8
+Rust,6,2,0,0,8
+TypeScript,8,0,0,0,8
